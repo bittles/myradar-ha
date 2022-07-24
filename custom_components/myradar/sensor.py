@@ -823,15 +823,15 @@ class DarkSkyData:
     def _update(self):
         """Get the latest data from MyRadar."""
         try:
-            #self.data = forecastio.load_forecast( ##old dark sky stuff
-            #    self._api_key,
-            #    self.latitude,
-            #    self.longitude,
-            #    units=self.units,
-            #    lang=self.language,
-            #)
-            forecastString = "https://api.myradar.dev/forecast/" +  self._api_key + "/" + str(self.latitude) + "," + str(self.longitude) + "?units=" + self.units
-            self.data = forecastio.manual(forecastString)			
+            self.data = myradarforecast.load_forecast( ##old dark sky stuff
+                self._api_key,
+                self.latitude,
+                self.longitude,
+                units=self.units,
+                lang=self.language,
+            )
+#            forecastString = "https://api.myradar.dev/forecast/" +  self._api_key + "/" + str(self.latitude) + "," + str(self.longitude) + "?units=" + self.units
+#            self.data = forecastio.manual(forecastString)			
             if self._connect_error:
                 self._connect_error = False
                 _LOGGER.info("Reconnected to MyRadar")
